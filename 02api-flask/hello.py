@@ -1,8 +1,10 @@
 from flask import Flask
 from flask import request
+import usarMongoDB # aca importamos el archivo nuevo que interactua con la base
+    print ('you are here')
 
-print ('you are here')
 app = Flask(__name__)
+
 
 @app.route("/")
 def hello():
@@ -10,10 +12,10 @@ def hello():
 
 @app.route('/postjson', methods = ['POST'])
 def postJsonHandler():
-    print ('Getting RAW Data')
-    print request.get_data()
-    print ('Validate JSON Format')
-    print (request.is_json)
-    content = request.get_json()
-    print (content)
+
+    NBData = request.get_json()
+    # Registro la fecha desde el lado del servidor
+    NBData.update({"FECHA":datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")})
+    # Inserto el valor en la base
+    usarMongoDB.insertDatosNotebook(NBData)
     return 'JSON posted'
