@@ -16,7 +16,7 @@ def postJsonHandler():
 
     NBData = request.get_json()
     # Registro la fecha desde el lado del servidor
-    NBData.update({"FECHA":datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")})
+    # NBData.update({"FECHA":datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")})
     # Inserto el valor en la base
     usarMongoDB.insertDatosNotebook(NBData)
     return 'JSON posted'
