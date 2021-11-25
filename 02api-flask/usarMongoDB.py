@@ -1,10 +1,10 @@
 from pymongo import MongoClient
-from datetime import datetime
 import json
 
 # establish connex
 conn = MongoClient('localhost', 27017)
 conn = MongoClient()
+print ('conectado...' + conn)
 
 # create db
 db = conn.baseDeDatos
