@@ -4,7 +4,7 @@ import json
 # establish connex
 conn = MongoClient('localhost', 27017)
 conn = MongoClient()
-print ('conectado...' + conn)
+print ('conectado...')
 
 # create db
 db = conn.baseDeDatos
