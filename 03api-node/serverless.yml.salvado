@@ -1,0 +1,31 @@
+service: api-node-prueba
+
+app: api-node-prueba
+org: angelgbcore
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  region: us-east-2
+
+plugins:
+  - serverless-offline
+
+functions:
+  saludo:
+    handler: api.saludo
+  saludoUsuario:
+    handler: api.saludoUsuario
+    events:
+      - http:
+          method: GET
+          path: /user/{name}
+  crearUsuario:
+    handler: api.crearUsuario
+    events:
+      - http:
+          method: POST
+          path: /user
